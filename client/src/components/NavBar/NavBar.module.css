@@ -1,0 +1,56 @@
+.menu {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(0, 0, 14, 0.9);
+  justify-content: space-evenly;
+  height: 2.5em;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  left: 0%;
+  padding-left: 6em;
+  border-style: solid;
+  border-top: unset;
+  border-left: unset;
+  border-right: unset;
+  border-color: rgb(255, 255, 255);
+}
+
+.div {
+  color: rgb(66, 16, 166);
+  height: 2em;
+  border-radius: 0em;
+  width: 11em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0.125em;
+  border-radius: 0.5em;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.img {
+  width: 1em;
+  height: 1em;
+}
+
+.logo {
+  position: fixed;
+  left: 0%;
+  padding-left: 4.75em;
+  color: aliceblue;
+  font-family: "Silkscreen", cursive;
+  /* background-color: #00000e; */
+  height: 2em;
+  padding-top: 0.5em;
+}
+
+.button {
+  cursor: pointer;
+  font-family: "Silkscreen", cursive;
+}

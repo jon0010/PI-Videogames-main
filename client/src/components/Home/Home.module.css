@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+
+.container {
+  margin-left: 15em;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  padding-bottom: 1em;
+}
+
+.input {
+  cursor: pointer;
+}
+
+.order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  font-family: "Silkscreen", cursive;
+  background-image: url("https://i.pinimg.com/originals/1a/cf/9f/1acf9f80504d4094e0fa4392291cbf1b.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+
+.lateral {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 2.7em;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 13em;
+  height: 100%;
+  background-color: rgb(0, 0, 14, 0.9);
+  background-attachment: fixed;
+  align-items: flex-start;
+  gap: 4em;
+  justify-items: stretch;
+  text-align: left;
+  border-style: solid;
+  border-left: unset;
+  border-top: unset;
+  border-bottom: unset;
+  border-right-color: aliceblue;
+  color: aliceblue;
+  padding-top: 1em;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titles {
+  width: 100%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  border-style: solid;
+  border-top: unset;
+  border-left: unset;
+  border-right: unset;
+  border-bottom-style: aliceblue;
+  border-width: 1px;
+  padding-bottom: 0.5em;
+}
+
+.items {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  gap: 1em;
+}
+
+.bars {
+  width: 100%;
+}
+
+.paging {
+  margin-left: 15.2em;
+  margin-top: 2.7em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  display: flex;
+  position: fixed;
+  right: 0%;
+  left: 0%;
+  min-width: auto;
+  justify-content: space-around;
+  background: rgb(0, 0, 14, 0.9);
+}
+
+.loader {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  margin: 0 40%;
+  border-radius: 10px;
+}
+
+.loader div {
+  width: 8%;
+  height: 24%;
+  background: black;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+.loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15em;
+  min-height: 100vh;
+}
+
+.pageNumberTop {
+  margin-top: 5em;
+  margin-left: 17.5em;
+}
+
+.pageNumberButton {
+  bottom: 0%;
+}
+
+.font {
+  font-family: "Silkscreen", cursive;
+  cursor: pointer;
+}
