@@ -12,6 +12,11 @@
   color: aliceblue;
   border-style: solid;
   border-color: #212121;
+  cursor: pointer;
+}
+
+.container:hover{
+background-color: #9f335c;
 }
 
 .genres {
@@ -40,13 +45,13 @@
 }
 
 .detail :hover {
-  background-color: aliceblue;
-  color: #040f16;
-  border-style: solid;
-  border-bottom-color: aliceblue;
-  border-top-color: rgba(0, 0, 0, 0.75);
+  /* background-color: aliceblue; */
+  /* color: #040f16;
+  border-style: solid; */
+  /* border-bottom-color: aliceblue; */
+  /* border-top-color: rgba(0, 0, 0, 0.75);
   border-left-color: rgba(0, 0, 0, 0.75);
-  border-right-color: rgba(0, 0, 0, 0.75);
+  border-right-color: rgba(0, 0, 0, 0.75); */
   padding-bottom: 1em;
 }
 

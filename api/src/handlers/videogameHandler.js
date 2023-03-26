@@ -36,18 +36,11 @@ const videogamesHandler = async (req, res) => {
 
 const videogamesPosts = async (req, res) => {
   try {
-    let {
-      name,
-      background_image,
-      released,
-      rating,
-      platforms,
-      genres,
-      description,
-    } = req.body;
+    let { name, image, released, rating, platforms, genres, description } =
+      req.body;
     let game = await Videogame.create({
       name,
-      image: background_image,
+      image,
       released,
       genres,
       rating,
@@ -76,5 +69,4 @@ module.exports = {
   videogamesHandler,
   videogamesHandlerById,
   videogamesPosts,
-  // videogamesQueryHandler,
 };

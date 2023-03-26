@@ -14,8 +14,6 @@ const FilterGenres = ({ setPage }) => {
   }, [dispatch]);
 
   const handleOnChange = (e) => {
-    console.log(filters);
-    console.log(e.target.value);
     e.preventDefault();
     if (!filters.includes(e.target.value)) {
       filters.push(e.target.value);

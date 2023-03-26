@@ -19,8 +19,6 @@ const FormVideogame = () => {
   const validationName = (e) => {
     if (e.target.value.length > 250) {
       error.name = "The name characters are way to many";
-    } else if (!/([A-Z])\w+/g.test(e.target.value)) {
-      error.name = "The name must start with a capital letter.";
     } else {
       error.name = null;
     }
@@ -31,15 +29,6 @@ const FormVideogame = () => {
       error.rating = "Rate the game with numbers between 1 and 5.";
     } else {
       error.rating = null;
-    }
-  };
-
-  const validationDescription = (e) => {
-    if (!/([A-Z])\w+/g.test(e.target.value)) {
-      error.description =
-        "The game must have a description starting with a capital letter.";
-    } else {
-      error.description = null;
     }
   };
 
@@ -68,11 +57,27 @@ const FormVideogame = () => {
     });
   };
 
+  const handlePlatform = (e) => {
+    e.preventDefault();
+    setForm({
+      ...form,
+      platform: e.target.value,
+    });
+  };
+
+  const handleReleased = (e) => {
+    e.preventDefault();
+    setForm({
+      ...form,
+      released: e.target.value,
+    });
+  };
+
   const handleBackgroundImage = (e) => {
     e.preventDefault();
     setForm({
       ...form,
-      background_image: e.target.value,
+      image: e.target.value,
     });
   };
 
@@ -87,8 +92,6 @@ const FormVideogame = () => {
   };
 
   const handleGenres = (e) => {
-    console.log(e.target.value);
-    console.log(form);
     e.preventDefault();
     error.genres = null;
     if (e.target.value !== "select_genres") {
@@ -102,7 +105,6 @@ const FormVideogame = () => {
 
   const handleDescription = (e) => {
     e.preventDefault();
-    validationDescription(e);
     setForm({
       ...form,
       description: e.target.value,
@@ -126,10 +128,35 @@ const FormVideogame = () => {
           </label>
           {error.name && <span className={styles.asterisco}>{error.name}</span>}
           <input type="text" id="name" onChange={(e) => handleName(e)} />
+
+          <label htmlFor="platform">
+            Platform <span className={styles.asterisco}>*</span>
+          </label>
+          {error.platform && (
+            <span className={styles.asterisco}>{error.platform}</span>
+          )}
+          <input
+            type="text"
+            id="platform"
+            onChange={(e) => handlePlatform(e)}
+          />
+
+          <label htmlFor="released">
+            Released <span className={styles.asterisco}>*</span>
+          </label>
+          {error.released && (
+            <span className={styles.asterisco}>{error.released}</span>
+          )}
+          <input
+            type="text"
+            id="released"
+            onChange={(e) => handleReleased(e)}
+          />
+
           <label htmlFor="background_image">Background Image</label>
           <input
             type="text"
-            id="background_image"
+            id="image"
             onChange={(e) => handleBackgroundImage(e)}
           />
           <label htmlFor="rating">Rating:</label>

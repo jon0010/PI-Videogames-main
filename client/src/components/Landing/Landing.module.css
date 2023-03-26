@@ -39,6 +39,7 @@
   height: 160px;
   border: none;
   margin-bottom: 320px;
+  cursor: pointer;
 }
 
 .button:hover {

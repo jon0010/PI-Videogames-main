@@ -25,7 +25,7 @@
 
 .home {
   font-family: "Silkscreen", cursive;
-  background-image: url("https://i.pinimg.com/originals/1a/cf/9f/1acf9f80504d4094e0fa4392291cbf1b.jpg");
+  background-image: url("https://i.pinimg.com/originals/75/c9/96/75c9967f51b21bf53cab54e043f52837.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -211,8 +211,11 @@
 }
 
 .pageNumberTop {
-  margin-top: 5em;
-  margin-left: 17.5em;
+  margin-top: 2.5em;
+  margin-left: 10.5em;
+  color: white;
+  text-shadow: 2px 2px 4px #ff0404;
+  font-size: 30px;
 }
 
 .pageNumberButton {
