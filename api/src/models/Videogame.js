@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      platforms: {
+      platform: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       rating: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       created: {

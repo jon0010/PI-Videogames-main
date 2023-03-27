@@ -61,7 +61,8 @@ export const postVideogame = (form) => {
   return async function (dispatch) {
     try {
       const data = await api.post("/videogames", form);
-      axios
+
+      api
         .get("/videogames")
         .then((json) => json.data)
         .then((data) => dispatch({ type: GET_ALL_VIDEOGAMES, payload: data }));

@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 import {
   GET_ALL_VIDEOGAMES,
   FIND_VIDEOGAME,
@@ -56,6 +55,7 @@ const reducer = (state = initialState, action) => {
       };
     case FILTER_BY_GENRES:
       for (let i = 0; i < videogames.length; i++) {
+        // eslint-disable-next-line no-loop-func
         videogames[i].genres.forEach((element) => {
           if (
             element.name === action.filter &&

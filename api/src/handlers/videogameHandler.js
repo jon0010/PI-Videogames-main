@@ -28,26 +28,19 @@ const videogamesHandler = async (req, res) => {
   }
 };
 
-// const videogamesQueryHandler = async (req, res) => {
-//   const queryParams = req.query;
-//   const videogames = await getAllVideogames(queryParams);
-//   res.json(videogames);
-// };
-
 const videogamesPosts = async (req, res) => {
   try {
-    let { name, image, released, rating, platforms, genres, description } =
+    let { name, image, released, rating, platform, genres, description } =
       req.body;
     let game = await Videogame.create({
       name,
       image,
       released,
-      genres,
       rating,
-      platforms,
+      platform,
       description,
     });
-    await game.addGenre(genres);
+    await game.addGenres(genres);
     return res.status(200).send("Videogame created successfully");
   } catch (error) {
     return res.status(400).json(error.message);

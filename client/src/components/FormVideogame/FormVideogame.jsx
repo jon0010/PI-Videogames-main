@@ -48,6 +48,19 @@ const FormVideogame = () => {
     return history(`/home`);
   };
 
+  // const handleOnSubmit = (e) => {
+  //   e.preventDefault();
+  //   const newForm = {
+  //     ...form,
+  //     image: form.image,
+  //     Genres: formGenres,
+  //     rating: "",
+  //     description: "",
+  //   };
+  //   dispatch(postVideogame(newForm));
+  //   return history(`/home`);
+  // };
+
   const handleName = (e) => {
     e.preventDefault();
     validationName(e);
@@ -88,7 +101,7 @@ const FormVideogame = () => {
       ...form,
       rating: e.target.value,
     });
-    console.log(form, form.name);
+    console.log(form);
   };
 
   const handleGenres = (e) => {
@@ -109,7 +122,6 @@ const FormVideogame = () => {
       ...form,
       description: e.target.value,
     });
-    console.log(form);
   };
 
   const handleGenresX = (e) => {
