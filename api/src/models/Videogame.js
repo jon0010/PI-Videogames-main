@@ -19,11 +19,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      platform: {
+      platforms: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
-      image: {
+      background_image: {
         type: DataTypes.STRING,
         allowNull: false,
       },

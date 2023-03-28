@@ -1,5 +1,6 @@
 .form {
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
+  background-color: rgba(107, 106, 175, 0.176);
   display: grid;
   place-content: center;
   align-content: stretch;
@@ -18,8 +19,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding-top: 0.75em;
+  align-items: center;
+  padding-top: 1.75em;
   padding-bottom: 1em;
   font-family: "Silkscreen", cursive;
   background-image: url("../../img/ChillMario.gif");
@@ -34,8 +35,7 @@
 }
 
 .form {
-  background-color: transparent;
-  color: azure;
+  color: rgb(6, 245, 245);
   border: none;
   width: 32%;
   height: 55%;

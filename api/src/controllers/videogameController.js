@@ -1,46 +1,52 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
 require("dotenv").config();
-
 const getAllVideogames = async () => {
-  let links = [];
-  let apis = [];
-  for (let i = 1; i <= 5; i++) {
-    links.push(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=${i}`
-    );
-  }
-  apis = links.map((link) => {
-    return axios
-      .get(link)
-      .then((data) => data.data)
-      .then((data) => data.results)
-      .then((data) => {
-        return data.map((game) => ({
+  const numberPages = [1, 2, 3, 4, 5];
+  const links = numberPages.map((page) => {
+    return `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=${page}`;
+  });
+  const apiVideogames = await Promise.all(
+    links.map(async (link) => {
+      const videogamesPage = await axios.get(link);
+      const videogames = videogamesPage.data.results;
+      const formatVideogames = videogames.map((game) => {
+        return {
           id: game.id,
           name: game.name,
           background_image: game.background_image,
           genres: game.genres.map((genre) => genre.name),
           platforms: game.platforms.map((element) => element.platform.name),
           rating: game.rating,
-        }));
+        };
       });
+      return formatVideogames;
+    })
+  );
+  const clearListVideogamesApi = apiVideogames.reduce((a, b) => {
+    return a.concat(b);
   });
-
   let databaseVideoGames = await Videogame.findAll({
     include: {
       model: Genre,
       attributes: ["name"],
-      through: {
-        attributes: [],
-      },
     },
   });
-
-  return Promise.all(apis)
-    .then((data) => data.flat())
-    .then((data) => [...data, ...databaseVideoGames])
-    .catch((error) => new Error(error));
+  const clearListVideogamesDB = databaseVideoGames.map((dbVideogame) => {
+    const dbGame = {
+      id: dbVideogame.dataValues.id,
+      name: dbVideogame.dataValues.name,
+      background_image: dbVideogame.dataValues.background_image,
+      genres: dbVideogame.dataValues.Genres.map(
+        (genre) => genre.dataValues.name
+      ),
+      platforms: dbVideogame.dataValues.platforms,
+      rating: dbVideogame.dataValues.rating,
+    };
+    return dbGame;
+  });
+  console.log(clearListVideogamesDB);
+  return clearListVideogamesApi.concat(clearListVideogamesDB);
 };
 
 const getVideogameById = async (id) => {

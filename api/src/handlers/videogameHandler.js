@@ -2,7 +2,8 @@ const {
   getAllVideogames,
   getVideogameById,
 } = require("../controllers/videogameController");
-const { Videogame } = require("../db.js");
+const { Videogame, Genre } = require("../db.js");
+
 
 const videogamesHandler = async (req, res) => {
   try {
@@ -32,15 +33,18 @@ const videogamesPosts = async (req, res) => {
   try {
     let { name, image, released, rating, platform, genres, description } =
       req.body;
-    let game = await Videogame.create({
+    const formatGame = {
       name,
-      image,
+      description,
+      platforms: [platform],
+      background_image: image,
       released,
       rating,
-      platform,
-      description,
-    });
-    await game.addGenres(genres);
+      created: true,
+    };
+    let game = await Videogame.create(formatGame);
+    let generos = await Genre.findAll({ where: { name: genres } });
+    await game.addGenres(generos);
     return res.status(200).send("Videogame created successfully");
   } catch (error) {
     return res.status(400).json(error.message);
