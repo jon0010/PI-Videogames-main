@@ -16,8 +16,8 @@ const FilterGenres = ({ setPage }) => {
   const handleOnChange = (e) => {
     e.preventDefault();
     if (!filters.includes(e.target.value)) {
-      filters.push(e.target.value);
-      dispatch(filterByGenres(e.target.value));
+      setFilters(filters.concat(e.target.value));
+      dispatch(filterByGenres([e.target.value, ...filters]));
       setPage(1);
     }
   };
@@ -25,7 +25,7 @@ const FilterGenres = ({ setPage }) => {
   const handleOnClick = (e) => {
     e.preventDefault();
     setFilters([]);
-    dispatch(filterByGenres());
+    dispatch(filterByGenres([]));
   };
 
   return (

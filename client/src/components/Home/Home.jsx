@@ -13,6 +13,7 @@ import CardVideogame from "../CardVideogame/CardVideogame";
 import styles from "./Home.module.css";
 //---------------------------------------------------------------------
 const Home = () => {
+  const videogamesAux = useSelector((state) => state.videogamesAux);
   const videogames = useSelector((state) => state.videogames);
   const dispatch = useDispatch();
   const [orderName, setOrderName] = useState("");
@@ -21,22 +22,18 @@ const Home = () => {
   const videogamesPerPage = 15;
   const lastIndex = page * videogamesPerPage;
   const firstIndex = lastIndex - videogamesPerPage;
-  const pageVideogames = videogames.slice(firstIndex, lastIndex);
-  const pagesNumber = Math.ceil(videogames.length / 15);
-  const post = useSelector((state) => state.post);
+  const pageVideogames = videogamesAux.slice(firstIndex, lastIndex);
+  const pagesNumber = Math.ceil(videogamesAux.length / 15);
   const pages = [];
   for (let i = 1; i <= pagesNumber; i++) {
     pages.push([i]);
   }
 
   useEffect(() => {
-    if (post === true) {
-      dispatch(getAllVideogames());
-    }
     if (videogames.length === 0) {
       dispatch(getAllVideogames());
     }
-  }, [dispatch, post, videogames.length]);
+  }, [dispatch, videogames]);
   //-----------------------------------------------------------------
   const handlePageChange = (newPage, paging) => {
     if (newPage) {
@@ -87,12 +84,12 @@ const Home = () => {
             <div className={styles.titles}>Orders</div>
             <span>Name</span>
             <div className={styles.order}>
-              <label htmlFor="as" className={styles.input}>
+              <label htmlFor="asc" className={styles.input}>
                 <input
                   type="radio"
                   name="orderName"
-                  id="as"
-                  checked={orderName === "as"}
+                  id="asc"
+                  checked={orderName === "asc"}
                   onChange={(e) => handleOrderName(e)}
                 />
                 A - Z
@@ -134,7 +131,7 @@ const Home = () => {
           </div>
         </nav>
         <div className={styles.number}>
-          {videogames.length > 0 && (
+          {videogamesAux.length > 0 && (
             <div className={styles.paging}>
               {pages.length > 1 && (
                 <button
@@ -166,7 +163,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        {videogames.length > 0 ? (
+        {pageVideogames && (
           <div>
             <div className={styles.pageNumberTop}>page: {page}</div>
             <div className={styles.container}>
@@ -181,7 +178,8 @@ const Home = () => {
               ))}
             </div>
           </div>
-        ) : (
+        )}
+        {videogames.length === 0 && (
           <div className={styles.all}>
             <div className={styles.loader}>
               <div className={styles.bar1}></div>
@@ -196,6 +194,13 @@ const Home = () => {
               <div className={styles.bar10}></div>
               <div className={styles.bar11}></div>
               <div className={styles.bar12}></div>
+            </div>
+          </div>
+        )}
+        {videogames.length > 0 && pageVideogames.length === 0 && (
+          <div className={styles.all}>
+            <div className={styles.loader}>
+              <p>NO HAY GAMEEE</p>
             </div>
           </div>
         )}

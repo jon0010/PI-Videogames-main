@@ -31,17 +31,9 @@ const reducer = (state = initialState, action) => {
         orderedAux: action.payload,
       };
     case FIND_VIDEOGAME:
-      videogamesAux.forEach((game) => {
-        for (const find of action.payload) {
-          if (game.id === find.id) {
-            filtered.push(find);
-          }
-        }
-      });
       return {
         ...state,
-        videogamesAux: videogamesAux,
-        videogames: filtered,
+        videogamesAux: action.payload,
       };
     case VIDEOGAME_DETAIL:
       return {
@@ -54,95 +46,57 @@ const reducer = (state = initialState, action) => {
         genres: action.payload,
       };
     case FILTER_BY_GENRES:
-      for (let i = 0; i < videogames.length; i++) {
-        // eslint-disable-next-line no-loop-func
-        videogames[i].genres.forEach((element) => {
-          if (
-            element.name === action.filter &&
-            !filtered.includes(videogames[i])
-          ) {
-            filtered.push(videogames[i]);
-          }
+      let filterGenresVideogames = videogames;
+      if (action.payload.length > 0) {
+        filterGenresVideogames = videogamesAux.filter((videogame) => {
+          const noIncludesGenre = [];
+          action.payload.forEach((genre) => {
+            if (!videogame.genres.includes(genre)) {
+              noIncludesGenre.push(genre);
+            }
+          });
+          return !noIncludesGenre.length;
         });
       }
       return {
         ...state,
-        videogamesAux: videogamesAux,
-        videogames: action.filter ? filtered : videogamesAux,
-        errorFilter: filtered.length === 0 && action.filter ? true : false,
+        videogamesAux: filterGenresVideogames,
       };
     case FILTER_BY_ORIGIN:
-      if (action.filter === "db") {
-        videogamesAux.forEach((game) => {
-          if (game.database) {
-            filtered.push(game);
-          }
-        });
-      } else {
-        videogamesAux.forEach((game) => {
-          if (!game.database) {
-            filtered.push(game);
-          }
-        });
-      }
+      const filterVideogame = videogamesAux.filter((game) => {
+        if (action.payload === "db") {
+          return typeof game.id === "string";
+        }
+        if (action.payload === "api") {
+          return typeof game.id === "number";
+        }
+        return true;
+      });
       return {
         ...state,
-        videogamesAux: videogamesAux,
-        videogames: filtered,
+        videogamesAux: filterVideogame,
       };
     case ORDER_BY_NAME:
-      if (action.order === "as") {
-        filtered = videogames.sort((a, b) => {
-          if (a.name > b.name) {
-            return 1;
-          } else if (b.name > a.name) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-      } else if (action.order === "des") {
-        filtered = videogames.sort((a, b) => {
-          if (a.name > b.name) {
-            return -1;
-          } else if (b.name > a.name) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-      }
+      const orderNameVideogames = videogamesAux.sort((gameA, gameB) => {
+        if (action.payload === "asc") {
+          return gameA.name.toLowerCase() < gameB.name.toLowerCase() ? -1 : 0;
+        }
+        return gameB.name.toLowerCase() < gameA.name.toLowerCase() ? -1 : 0;
+      });
       return {
         ...state,
-        videogamesAux: videogamesAux,
-        videogames: action.order === "default" ? state.orderedAux : filtered,
+        videogamesAux: orderNameVideogames,
       };
     case ORDER_BY_RATING:
-      if (action.order === "up") {
-        filtered = videogames.sort((a, b) => {
-          if (a.rating < b.rating) {
-            return 1;
-          } else if (b.rating < a.rating) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-      } else if (action.order === "down") {
-        filtered = videogames.sort((a, b) => {
-          if (a.rating < b.rating) {
-            return -1;
-          } else if (b.rating < a.rating) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-      }
+      const orderRatingVideogames = videogamesAux.sort((gameA, gameB) => {
+        if (action.payload === "up") {
+          return gameB.rating - gameA.rating;
+        }
+        return gameA.rating - gameB.rating;
+      });
       return {
         ...state,
-        videogamesAux: videogamesAux,
-        videogames: filtered,
+        videogamesAux: orderRatingVideogames,
       };
     default:
       return {
