@@ -19,7 +19,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  let filtered = [];
   let videogamesAux = state.videogamesAux;
   let videogames = state.videogames;
   switch (action.type) {
