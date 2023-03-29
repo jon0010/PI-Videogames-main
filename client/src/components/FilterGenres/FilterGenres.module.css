@@ -1,8 +1,9 @@
 .button {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Silkscreen", cursive;
   cursor: pointer;
 }
 
 .genres {
-  width: 13.8em;
+  width: 12.9em;
+  height: 1.7em;
 }

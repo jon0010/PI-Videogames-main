@@ -21,13 +21,12 @@
 .div {
   color: rgb(66, 16, 166);
   height: 2em;
-  border-radius: 0em;
+  border-radius: 0.5em;
   width: 11em;
   display: flex;
   justify-content: center;
   align-items: center;
   border-width: 0.125em;
-  border-radius: 0.5em;
 }
 
 .link {
@@ -45,7 +44,6 @@
   padding-left: 4.75em;
   color: aliceblue;
   font-family: "Silkscreen", cursive;
-  /* background-color: #00000e; */
   height: 2em;
   padding-top: 0.5em;
 }

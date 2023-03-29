@@ -11,7 +11,7 @@ import FilterGenres from "../FilterGenres/FilterGenres";
 import FilterOrigin from "../FilterOrigin/FilterOrigin";
 import CardVideogame from "../CardVideogame/CardVideogame";
 import styles from "./Home.module.css";
-//---------------------------------------------------------------------
+
 const Home = () => {
   const videogamesAux = useSelector((state) => state.videogamesAux);
   const videogames = useSelector((state) => state.videogames);
@@ -34,7 +34,7 @@ const Home = () => {
       dispatch(getAllVideogames());
     }
   }, [dispatch, videogames]);
-  //-----------------------------------------------------------------
+
   const handlePageChange = (newPage, paging) => {
     if (newPage) {
       setPage(newPage[0]);
@@ -199,8 +199,21 @@ const Home = () => {
         )}
         {videogames.length > 0 && pageVideogames.length === 0 && (
           <div className={styles.all}>
-            <div className={styles.loader}>
-              <p>NO HAY GAMEEE</p>
+            {/* <div className={styles.loader}> */}
+            <div className={styles.btnImgContainer}>
+              <img
+                className={styles.gameNotFound}
+                src="https://scontent.ffdo1-1.fna.fbcdn.net/v/t39.30808-6/337812544_1241291423148253_3893825842201335811_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=0qknrTnytHMAX_eLZZ2&_nc_ht=scontent.ffdo1-1.fna&oh=00_AfCUOJdhsuf_C1U40nUlvTGl6Szazw7TE8mFDBwUgw2abw&oe=6427902A"
+                alt="gameNotFound"
+              />
+
+              <button
+                className={styles.btnNotFound}
+                onClick={() => window.location.reload()}
+              >
+                {" "}
+                YES{" "}
+              </button>
             </div>
           </div>
         )}

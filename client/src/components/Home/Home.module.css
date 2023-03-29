@@ -12,6 +12,39 @@
   padding-bottom: 1em;
 }
 
+.gameNotFound {
+  width: 47%;
+  height: 47%;
+  margin-left: 340px;
+}
+
+.btnNotFound {
+  font-family: "Silkscreen", cursive;
+  cursor: pointer;
+  border: none;
+  margin-top: 355px;
+  margin-left: 200px;
+  background-color: transparent;
+  color: white;
+  font-size: 2.6em;
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+}
+
+.btnImgContainer img {
+  display: block;
+  width: 50%;
+  height: 50%;
+}
+
+.btnImgContainer .btnNotFound {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  margin-left: 530px;
+}
+
 .input {
   cursor: pointer;
 }
@@ -25,7 +58,7 @@
 
 .home {
   font-family: "Silkscreen", cursive;
-  background-image: url("https://i.pinimg.com/originals/75/c9/96/75c9967f51b21bf53cab54e043f52837.gif");
+  background-image: url("https://i.pinimg.com/originals/ff/95/24/ff9524f29f583f6625c447f7834a0886.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;

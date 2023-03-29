@@ -46,9 +46,11 @@ const FilterGenres = ({ setPage }) => {
             </option>
           ))}
         </select>
-        <button className={styles.button} onClick={(e) => handleOnClick(e)}>
-          x
-        </button>
+        <span>
+          <button className={styles.button} onClick={(e) => handleOnClick(e)}>
+            x
+          </button>
+        </span>
         <br />
         {filters.length > 0 &&
           filters.map((filter) => (

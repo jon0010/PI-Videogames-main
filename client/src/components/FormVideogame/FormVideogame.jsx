@@ -48,19 +48,6 @@ const FormVideogame = () => {
     return history(`/home`);
   };
 
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   const newForm = {
-  //     ...form,
-  //     image: form.image,
-  //     Genres: formGenres,
-  //     rating: "",
-  //     description: "",
-  //   };
-  //   dispatch(postVideogame(newForm));
-  //   return history(`/home`);
-  // };
-
   const handleName = (e) => {
     e.preventDefault();
     validationName(e);
@@ -152,7 +139,6 @@ const FormVideogame = () => {
             id="platform"
             onChange={(e) => handlePlatform(e)}
           />
-
           <label htmlFor="released">
             Released <span className={styles.asterisco}>*</span>
           </label>
@@ -164,7 +150,6 @@ const FormVideogame = () => {
             id="released"
             onChange={(e) => handleReleased(e)}
           />
-
           <label htmlFor="background_image">Background Image</label>
           <input
             type="text"
@@ -183,7 +168,6 @@ const FormVideogame = () => {
             max="5"
             placeholder="1-5"
           />
-
           <label htmlFor="genres">
             Genres<span className={styles.asterisco}>*</span>
           </label>

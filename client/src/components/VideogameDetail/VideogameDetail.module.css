@@ -20,8 +20,8 @@
   height: 42%;
   width: 100%;
 
-  box-shadow: -7px 0 0 0 #000000, 7px 0 0 0 #000000,
-    0 -7px 0 0 #000000, 0 7px 0 0 #000000;
+  box-shadow: -7px 0 0 0 #000000, 7px 0 0 0 #000000, 0 -7px 0 0 #000000,
+    0 7px 0 0 #000000;
 }
 
 .card {
@@ -30,8 +30,8 @@
   height: auto;
   width: 60em;
   background: #bd3d6e;
-  box-shadow: -7px 0 0 0 #000000, 7px 0 0 0 #000000,
-    0 -7px 0 0 #000000, 0 7px 0 0 #000000;
+  box-shadow: -7px 0 0 0 #000000, 7px 0 0 0 #000000, 0 -7px 0 0 #000000,
+    0 7px 0 0 #000000;
 }
 
 .page {

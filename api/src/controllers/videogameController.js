@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
 require("dotenv").config();
+
 const getAllVideogames = async () => {
   const numberPages = [1, 2, 3, 4, 5];
   const links = numberPages.map((page) => {
@@ -45,7 +46,6 @@ const getAllVideogames = async () => {
     };
     return dbGame;
   });
-  console.log(clearListVideogamesDB);
   return clearListVideogamesApi.concat(clearListVideogamesDB);
 };
 

@@ -4,7 +4,6 @@ const {
 } = require("../controllers/videogameController");
 const { Videogame, Genre } = require("../db.js");
 
-
 const videogamesHandler = async (req, res) => {
   try {
     let { name } = req.query;
