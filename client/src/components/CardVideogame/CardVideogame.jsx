@@ -6,11 +6,13 @@ const CardVideogame = (props) => {
   return (
     <>
       <div className={styles.textCard}>
-        <div className={styles.container}>
+        <NavLink to={`/${props.id}`} className={styles.container}>
           <div className={styles.genres}>
-            <NavLink to={`/${props.id}`} className={styles.detail}>
-              <div className={styles.name}>{props.name.toUpperCase()}</div>
-            </NavLink>
+            <div className={styles.name}>
+              {props.name.toUpperCase() ||
+                props.genre ||
+                props.background_image}
+            </div>
             <div className={styles.text}>
               <ul>
                 {props.genres.map((genre) => (
@@ -24,7 +26,7 @@ const CardVideogame = (props) => {
             alt="error"
             className={styles.img}
           />
-        </div>
+        </NavLink>
       </div>
     </>
   );

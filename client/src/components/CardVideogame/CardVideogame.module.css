@@ -1,22 +1,26 @@
 .container {
   width: 15em;
   height: 20em;
+  text-decoration: none;
   border-top-left-radius: 1em;
   border-bottom-right-radius: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  border-radius: 30px;
-  background-color: #bd3d6e;
+  background-color: #1a2331;
   color: aliceblue;
   border-style: solid;
-  border-color: #212121;
+  border-color: #fef8f8;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 .container:hover {
-  background-color: #9f335c;
+  background-color: #0b1930;
+  box-shadow: 6px 6px 6px 6px rgba(128, 128, 128, 0.73);
+  transform: scale(1.06);
+  transition: transform 0.3s ease-in-out;
 }
 
 .genres {
@@ -44,12 +48,9 @@
   color: #f0f8ff;
 }
 
-.detail :hover {
-  padding-bottom: 1em;
-}
-
 .name {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding-top: 1em;
+  text-align: center;
 }
