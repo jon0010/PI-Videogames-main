@@ -1,7 +1,11 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getGenres, postVideogame } from "../../redux/actions/actions";
+import {
+  getGenres,
+  postVideogame,
+  getAllPlatforms,
+} from "../../redux/actions/actions";
 import NavBar from "../NavBar/NavBar";
 import styles from "./FormVideogame.module.css";
 
@@ -9,10 +13,12 @@ const FormVideogame = () => {
   const history = useNavigate();
 
   const genres = useSelector((state) => state.genres);
+  const platforms = useSelector((state) => state.platforms);
   const dispatch = useDispatch();
 
   const [formGenres, setGenres] = useState([]);
   const [form, setForm] = useState({});
+  const [formPlatforms, setPlatforms] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState({});
 
@@ -32,14 +38,29 @@ const FormVideogame = () => {
     }
   };
 
+  const validationDescription = (e) => {
+    if (!e.target.value) {
+      error.description = "Player! You must write a description.";
+    } else {
+      error.description = null;
+    }
+  };
+
   const validationGenres = () => {
     if (formGenres.length === 1) {
       error.genres = "The game must have at least one genre.";
     }
   };
 
+  const validationPlatforms = () => {
+    if (formPlatforms.length === 1) {
+      error.platforms = "The game must have at least one platform.";
+    }
+  };
+
   useEffect(() => {
     dispatch(getGenres());
+    dispatch(getAllPlatforms());
   }, [dispatch]);
 
   const handleOnSubmit = (e) => {
@@ -49,7 +70,6 @@ const FormVideogame = () => {
   };
 
   const handleName = (e) => {
-    e.preventDefault();
     validationName(e);
     setForm({
       ...form,
@@ -57,16 +77,22 @@ const FormVideogame = () => {
     });
   };
 
-  const handlePlatform = (e) => {
+  const handlePlatforms = (e) => {
     e.preventDefault();
-    setForm({
-      ...form,
-      platform: e.target.value,
-    });
+    error.platforms = null;
+    if (
+      formPlatforms.includes(e.target.value) &&
+      e.target.value !== "platforms"
+    ) {
+      formPlatforms.push(e.target.value);
+      setForm({
+        ...form,
+        platforms: formPlatforms,
+      });
+    }
   };
 
   const handleReleased = (e) => {
-    e.preventDefault();
     setForm({
       ...form,
       released: e.target.value,
@@ -74,7 +100,6 @@ const FormVideogame = () => {
   };
 
   const handleBackgroundImage = (e) => {
-    e.preventDefault();
     setForm({
       ...form,
       image: e.target.value,
@@ -82,7 +107,6 @@ const FormVideogame = () => {
   };
 
   const handleRating = (e) => {
-    e.preventDefault();
     validationRating(e);
     setForm({
       ...form,
@@ -94,7 +118,10 @@ const FormVideogame = () => {
   const handleGenres = (e) => {
     e.preventDefault();
     error.genres = null;
-    if (e.target.value !== "select_genres") {
+    if (
+      !formPlatforms.includes(e.target.value) &&
+      e.target.value !== "select_genres"
+    ) {
       formGenres.push(e.target.value);
       setForm({
         ...form,
@@ -104,7 +131,7 @@ const FormVideogame = () => {
   };
 
   const handleDescription = (e) => {
-    e.preventDefault();
+    validationDescription(e);
     setForm({
       ...form,
       description: e.target.value,
@@ -112,9 +139,16 @@ const FormVideogame = () => {
   };
 
   const handleGenresX = (e) => {
-    e.preventDefault();
     setGenres(formGenres.filter((genre) => genre !== e.target.value));
     validationGenres();
+  };
+
+  const handlePlatformsX = (e) => {
+    e.preventDefault();
+    setPlatforms(
+      formPlatforms.filter((platform) => platform !== e.target.value)
+    );
+    validationPlatforms();
   };
 
   return (
@@ -127,18 +161,37 @@ const FormVideogame = () => {
           </label>
           {error.name && <span className={styles.asterisco}>{error.name}</span>}
           <input type="text" id="name" onChange={(e) => handleName(e)} />
-
-          <label htmlFor="platform">
-            Platform <span className={styles.asterisco}>*</span>
+          <label htmlFor="platforms">
+            Platforms
+            <br />
+            <select
+              id="platforms"
+              onChange={(e) => {
+                handlePlatforms(e);
+              }}
+            >
+              <option value="platforms">Select platforms...</option>
+              {platforms.length > 0 &&
+                platforms.map((platform) => (
+                  <option key={platform} value={platform}>
+                    {platform}
+                  </option>
+                ))}
+            </select>
           </label>
-          {error.platform && (
-            <span className={styles.asterisco}>{error.platform}</span>
-          )}
-          <input
-            type="text"
-            id="platform"
-            onChange={(e) => handlePlatform(e)}
-          />
+          {formPlatforms.length > 0 &&
+            formPlatforms.map((platform) => (
+              <span key={platform}>
+                · {platform}
+                <button
+                  key={platform}
+                  value={platform}
+                  onClick={(e) => handlePlatformsX(e)}
+                >
+                  x
+                </button>
+              </span>
+            ))}
           <label htmlFor="released">
             Released <span className={styles.asterisco}>*</span>
           </label>

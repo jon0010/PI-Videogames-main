@@ -1,6 +1,7 @@
 const {
   getAllVideogames,
   getVideogameById,
+  getPlatforms,
 } = require("../controllers/videogameController");
 const { Videogame, Genre } = require("../db.js");
 
@@ -61,8 +62,18 @@ const videogamesHandlerById = async (req, res) => {
   }
 };
 
+const getPlatformsHandler = async (req, res) => {
+  try {
+    let platforms = await getPlatforms();
+    return res.status(200).send(platforms);
+  } catch (error) {
+    return res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
   videogamesHandler,
   videogamesHandlerById,
   videogamesPosts,
+  getPlatformsHandler,
 };

@@ -2,6 +2,7 @@ import {
   GET_ALL_VIDEOGAMES,
   FIND_VIDEOGAME,
   VIDEOGAME_DETAIL,
+  GET_ALL_PLATFORMS,
   GET_GENRES,
   FILTER_BY_GENRES,
   FILTER_BY_ORIGIN,
@@ -43,6 +44,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         genres: action.payload,
+      };
+    case GET_ALL_PLATFORMS:
+      return {
+        ...state,
+        platforms: action.data,
       };
     case FILTER_BY_GENRES:
       let filterGenresVideogames = videogames;

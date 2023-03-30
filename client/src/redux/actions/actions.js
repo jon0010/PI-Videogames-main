@@ -3,6 +3,7 @@ import {
   FIND_VIDEOGAME,
   VIDEOGAME_DETAIL,
   GET_GENRES,
+  GET_ALL_PLATFORMS,
   FILTER_BY_GENRES,
   FILTER_BY_ORIGIN,
   ORDER_BY_NAME,
@@ -71,6 +72,15 @@ export const postVideogame = (form) => {
     } catch (error) {
       return alert(error.message);
     }
+  };
+};
+
+export const getAllPlatforms = () => {
+  return async function (dispatch) {
+    return api
+      .get("/platforms")
+      .then((json) => json.data)
+      .then((data) => dispatch({ type: GET_ALL_PLATFORMS, data }));
   };
 };
 
