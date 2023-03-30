@@ -51,5 +51,8 @@
     "url": "https://github.com/jon0010/PI-Videogames-main/issues"
   },
   "homepage": "https://github.com/jon0010/PI-Videogames-main#readme",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "18.12.0"
+  }
 }
