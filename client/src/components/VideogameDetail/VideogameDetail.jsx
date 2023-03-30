@@ -12,7 +12,7 @@ const VideogameDetail = () => {
 
   useEffect(() => {
     dispatch(videogameDetail(params.id));
-  }, [params.id]);
+  }, [dispatch, params.id]);
 
   return (
     <>
