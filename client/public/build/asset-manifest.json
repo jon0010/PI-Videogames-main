@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.833010a2.chunk.css",
+    "main.js": "/static/js/main.4d0b4aa1.chunk.js",
+    "main.js.map": "/static/js/main.4d0b4aa1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fdf0b15f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fdf0b15f.js.map",
+    "static/js/2.7b9c5e5d.chunk.js": "/static/js/2.7b9c5e5d.chunk.js",
+    "static/js/2.7b9c5e5d.chunk.js.map": "/static/js/2.7b9c5e5d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.833010a2.chunk.css.map": "/static/css/main.833010a2.chunk.css.map",
+    "static/js/2.7b9c5e5d.chunk.js.LICENSE.txt": "/static/js/2.7b9c5e5d.chunk.js.LICENSE.txt",
+    "static/media/FormVideogame.module.css": "/static/media/ChillMario.79979531.gif",
+    "static/media/Landing.module.css": "/static/media/gtav_page.2676c75a.jpg",
+    "static/media/VideogameDetail.module.css": "/static/media/zombies.af957b75.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fdf0b15f.js",
+    "static/js/2.7b9c5e5d.chunk.js",
+    "static/css/main.833010a2.chunk.css",
+    "static/js/main.4d0b4aa1.chunk.js"
+  ]
+}
